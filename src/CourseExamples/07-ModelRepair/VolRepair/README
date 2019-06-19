@@ -1,0 +1,41 @@
+
+                            === volrepair ===
+
+This is a very simple model repair program that is loosely based on the
+paper
+  F. S. Nooruddin and G. Turk.
+  Simplification and repair of polygonal models using volumetric techniques.
+  IEEE Trans. on Visualization and Computer Graphics, 9(2):191–205, 2003.
+
+The program converts an arbitrary input model into a volumetric representation
+and then extracts the result mesh. A typical invocation might look like this:
+
+  volrepair 100 200 10 3 input.off output.off
+
+This would invoke the follwing steps
+  1) Read the triangle mesh 'input.off'
+  2) Record 10 depth images of resolution 200x200 pixels from randomly chosen
+     viewpoints.
+  3) Convert the model into a volumetric representation by projecting spatial
+     points into the depth images. Each point is classified as being either
+     inside or outside the model depending on the majority vote of the depth
+     images. Use 3x3x3 supersampling per voxel.
+  4) Apply the Marching Cubes to the volume and write the extracted mesh to
+     'output.off'.
+
+You might then want to apply OpenMesh's decimation program to the result.
+
+Note: Our algorithm only implements a subset of the algorithm that is
+proposed in Nooruddin and Turk's original paper. Possible extensions are:
+- In their original paper, Nooruddin and Turk propose to filter the
+  volume after converting the model by a 3x3x3 Gaussian smoothing filter.
+- The current implementation uses a very simple kd-tree to speed up
+  ray/triangle intersection tests.
+  - There are better algorithms for building kd-trees available, cf.
+
+  - Instead of kd-trees, one could use other space partitioning
+    techniques to speed up the intersection tests.
+  - Instead of ray casting, Nooruddin and Turk propose to scan convert
+    the model into the depth images. This could be done on the GPU.
+- Morphological operators (erosion/dilation) can be used to simplify the
+  model and close gaps and holes.

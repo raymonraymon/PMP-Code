@@ -1,0 +1,14 @@
+#==  SYSTEM PART -- DON'T TOUCH  ==============================================
+include $(ACGMAKE)/Config
+#==============================================================================
+
+
+SUBDIRS   := $(call find-subdirs)
+PACKAGES  := glut opengl x11
+PROJ_LIBS := OpenMesh/Tools OpenMesh/Core
+MODULES   := cxx
+
+
+#==  SYSTEM PART -- DON'T TOUCH  ==============================================
+include $(ACGMAKE)/Rules
+#==============================================================================

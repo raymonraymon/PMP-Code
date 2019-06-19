@@ -1,0 +1,22 @@
+
+                            === holefill ===
+
+This is a very simple model repair program that is loosely based on the
+paper
+
+  P. Liepa.
+  Filling holes in meshes.
+  In Proc. Symposium on Geometry Processing 03, pages 200–205, 2003.The program reads in triangle mesh, identifies all holes and closes them by
+a smooth surface patch. A typical invocation might look like this:
+
+  holefill 3 bunny_with_holes.off bunny_repaired.off
+
+The second parameter describes the stages that the program should run through:
+  1 = Produce the minimal triangulation of the holes only.
+  2 = Stage 1 + Remesh the fillings
+  3 = Stage 2 + Smooth the fillings
+
+You might want to experiment with the program by
+- modifying the weighting function
+- implmenting a better smoothing algorithm
+- implementing Liepa's original remeshing algorithm
