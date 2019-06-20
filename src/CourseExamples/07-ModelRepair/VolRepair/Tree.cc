@@ -33,7 +33,19 @@
 //=============================================================================
 #include "Tree.hh"
 //=============================================================================
-
+template<typename T>
+T Tree_min(T& a, T& b)
+{
+	if (a<b)
+	{
+		return a;
+	} 
+	else
+	{
+		return b;
+	}
+	
+}
 
 Tree::Tree()
 {
@@ -227,7 +239,7 @@ Tree::intersect( Node * _node,
     if ( _node->incident )
       dist2 = intersect( _node->incident, _t0, _t1, _level+1 );
     
-    return std::min( dist1, dist2 );
+    return Tree_min( dist1, dist2 );
   }
   
   if ( c0 != Plane::FRONT && c1 != Plane::FRONT )
@@ -241,7 +253,7 @@ Tree::intersect( Node * _node,
     if ( _node->incident )
       dist2 = intersect( _node->incident, _t0, _t1, _level+1 );
     
-    return std::min( dist1, dist2 );
+    return Tree_min( dist1, dist2 );
   }
   
   
@@ -261,12 +273,12 @@ Tree::intersect( Node * _node,
       dist2 = intersect( _node->incident, _t0, _t1, _level+1 );
     
     if ( dist1 != std::numeric_limits< double >::infinity() )
-      return std::min( dist1, dist2 );
+      return Tree_min( dist1, dist2 );
     
     if ( _node->back )
       dist3 = intersect( _node->back, t, _t1, _level+1 );
 
-    return std::min( dist2, dist3 );
+    return Tree_min( dist2, dist3 );
   }
   
   
@@ -283,12 +295,12 @@ Tree::intersect( Node * _node,
       dist2 = intersect( _node->incident, _t0, _t1, _level+1 );
     
     if ( dist1 != std::numeric_limits< double >::infinity() )
-      return std::min( dist1, dist2 );
+      return Tree_min( dist1, dist2 );
     
     if ( _node->front )
       dist3 = intersect( _node->front, t, _t1, _level+1 );
     
-    return std::min( dist2, dist3 );
+    return Tree_min( dist2, dist3 );
   }
   
   return std::numeric_limits< double >::infinity();

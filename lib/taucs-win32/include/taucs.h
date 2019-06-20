@@ -1,10 +1,21 @@
+#ifndef TAUCS_H
+#define TAUCS_H
+
 /*********************************************************/
 /* TAUCS                                                 */
 /* Author: Sivan Toledo                                  */
 /*********************************************************/
 
-#include <taucs_config_tests.h>
-#include <taucs_config_build.h>
+#include "taucs_config_tests.h"
+#include "taucs_config_build.h"
+#include <complex>
+#include <stdlib.h>
+#include <float.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /*********************************************************/
 /* Cilk-related stuff                                    */
@@ -129,7 +140,6 @@ typedef __complex__ double taucs_dcomplex;
 typedef __complex__ float  taucs_scomplex;
 */
 
-#include <complex.h>
 
 #undef I
 #ifdef _Imaginary_I
@@ -690,7 +700,6 @@ void   taucs_allocation_induce_failure(int i);
    within the testing programs.
 */
 
-#include <stdlib.h>
 
 void* taucs_malloc (size_t size)              ;
 void* taucs_calloc (size_t nmemb, size_t size);
@@ -701,7 +710,6 @@ void  taucs_free   (void* ptr)                ;
 
 #if defined(TAUCS_MEMORY_TEST_yes)
 
-#include <stdlib.h>
 
 void* taucs_internal_calloc(size_t nmemb, size_t size,char* file, int line);
 void* taucs_internal_malloc(size_t size,              char* file, int line);
@@ -789,7 +797,6 @@ extern int genmmd_(int*, int*, int*, int*, int*, int*, int*, int*, int*,
 
 #elif defined(OSTYPE_win32)
 
-#include <float.h>
 #define isnan(x)  (_isnan(x))
 #define isinf(x)  (!(_finite(x)) && !(_isnan(x)))
 #define finite(x) (_finite(x))
@@ -834,4 +841,11 @@ taucs_single taucs_blas_name(scnrm2)(int*, taucs_scomplex*, int*);
 /*                                                       */
 /*********************************************************/
 
+#undef min
+#undef max
 
+#ifdef __cplusplus
+} // extern C
+#endif
+
+#endif // ifndef TAUCS_H
