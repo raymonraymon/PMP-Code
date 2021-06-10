@@ -18,8 +18,6 @@
 ////////////////////////////////////////////
 
 #include "Gnuplot.hh"
-#include <stdlib.h>
-#include <cstring>
 #include <stdarg.h>
 #ifdef WIN32
 #  include <io.h>

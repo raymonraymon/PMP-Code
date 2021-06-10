@@ -26,9 +26,6 @@
 
 //== INCLUDES =================================================================
 
-
-#include <cstring>
-
 // OpenMesh
 #include <OpenMesh/Core/System/config.hh>
 #include <OpenMesh/Core/System/omstream.hh>

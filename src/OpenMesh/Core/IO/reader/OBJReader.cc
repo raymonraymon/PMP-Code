@@ -26,7 +26,6 @@
 
 //== INCLUDES =================================================================
 
-#include <cstring>
 
 // OpenMesh
 #include <OpenMesh/Core/IO/reader/OBJReader.hh>

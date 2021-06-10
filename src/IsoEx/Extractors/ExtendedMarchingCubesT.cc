@@ -126,6 +126,7 @@ process_cube(CubeIdx _idx)
   indices      = &triTable[cubetype][1][n_components+1];
 
   for (i=1; i<=n_components; ++i)  // sheets in this voxel
+
   {
     // current sheet contains n_vertices vertices
     n_vertices = triTable[cubetype][1][i];

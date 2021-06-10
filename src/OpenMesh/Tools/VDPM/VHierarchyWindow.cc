@@ -33,7 +33,6 @@
 //== INCLUDES =================================================================
 
 #include <OpenMesh/Tools/VDPM/VHierarchyWindow.hh>
-#include <cstring>
 
 //== NAMESPACES ===============================================================
 
